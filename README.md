@@ -1,7 +1,7 @@
 # Autonomous Agentic Workspace (`DeepSeek-V4-Pro · Qwen3.5-9B`)
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/CookieFilled/Qwen-DeepSeek-AgenticWorkspace-Colab/blob/main/Qwen_DeepSeek_AgenticWorkspace.ipynb)
-[![GPU](https://img.shields.io/badge/Google%20Colab-T4%20%7C%20L4%20%7C%20A100-F9AB00?logo=googlecolab&logoColor=white)](https://colab.research.google.com/github/CookieFilled/Qwen-DeepSeek-AgenticWorkspace-Colab/blob/main/Qwen_DeepSeek_AgenticWorkspace.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/CookieFilled/Qwen-DeepSeek-AgenticWorkspace-Colab/blob/main/DeepSeek_V4_Pro_Qwen35_Workspace_Colab .ipynb)
+[![GPU](https://img.shields.io/badge/Google%20Colab-T4%20%7C%20L4%20%7C%20A100-F9AB00?logo=googlecolab&logoColor=white)](https://colab.research.google.com/github/CookieFilled/Qwen-DeepSeek-AgenticWorkspace-Colab/blob/main/DeepSeek_V4_Pro_Qwen35_Workspace_Colab .ipynb)
 [![Inference](https://img.shields.io/badge/Engine-CUDA%20llama--server-76B900?logo=nvidia&logoColor=white)](https://github.com/ggml-org/llama.cpp)
 [![Skills](https://img.shields.io/badge/Workflows-Portable%20SKILL.md-22D3EE)](#portable-skillmd-system)
 
