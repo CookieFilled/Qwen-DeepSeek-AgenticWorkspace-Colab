@@ -1,11 +1,11 @@
 # Autonomous Agentic Workspace (`DeepSeek-V4-Pro · Qwen3.5-9B`)
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/CookieFilled/Qwen-DeepSeek-AgenticWorkspace-Colab/blob/main/DeepSeek_V4_Pro_Qwen35_Workspace_Colab .ipynb)
-[![GPU](https://img.shields.io/badge/Google%20Colab-T4%20%7C%20L4%20%7C%20A100-F9AB00?logo=googlecolab&logoColor=white)](https://colab.research.google.com/github/CookieFilled/Qwen-DeepSeek-AgenticWorkspace-Colab/blob/main/DeepSeek_V4_Pro_Qwen35_Workspace_Colab .ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/CookieFilled/Qwen-DeepSeek-AgenticWorkspace-Colab/blob/main/DeepSeek_V4_Pro_Qwen35_Workspace_Colab.ipynb)
+[![GPU](https://img.shields.io/badge/Google%20Colab-T4%20%7C%20L4%20%7C%20A100-F9AB00?logo=googlecolab&logoColor=white)](https://colab.research.google.com/github/CookieFilled/Qwen-DeepSeek-AgenticWorkspace-Colab/blob/main/DeepSeek_V4_Pro_Qwen35_Workspace_Colab.ipynb)
 [![Inference](https://img.shields.io/badge/Engine-CUDA%20llama--server-76B900?logo=nvidia&logoColor=white)](https://github.com/ggml-org/llama.cpp)
-[![Skills](https://img.shields.io/badge/Workflows-Portable%20SKILL.md-22D3EE)](#portable-skillmd-system)
+[![Skills](https://img.shields.io/badge/Workflows-Portable%20SKILL.md-22D3EE)](#included-starter-skills)
 
-A self-contained autonomous AI engineering, research, and desktop automation studio built for **Google Colab GPUs (T4 / L4 / A100)**. Powered by a native CUDA `llama-server` backend running **DeepSeek-V4-Pro · Qwen3.5-9B** with paired multimodal vision (`mmproj`), uncensored web and image search, headless Playwright Chromium, a live `1920x1080` X11/noVNC virtual desktop, and a dark-mode FastAPI + SSE studio UI exposed over Cloudflare Tunnel.
+A self-contained autonomous AI engineering, research, and desktop automation studio built for **Google Colab GPUs (T4 / L4 / A100)**. Powered by a native CUDA `llama-server` backend running **DeepSeek-V4-Pro · Qwen3.5-9B** with paired multimodal vision (`mmproj`), uncensored web and image search, headless Playwright Chromium, a live `1920x1080` X11/noVNC virtual desktop, and a FastAPI + SSE web studio exposed over Cloudflare Tunnel.
 
 <p align="center">
   <img src="assets/01-studio-dashboard.jpg" alt="Minimalist Agentic Studio Dashboard" width="100%" />
@@ -13,27 +13,68 @@ A self-contained autonomous AI engineering, research, and desktop automation stu
 
 ---
 
-## Core Capabilities
+## Key Features
 
-- **Native CUDA Inference + Auto-Healing Watchdog:** Runs prebuilt `sm_75`+ CUDA `llama-server` (with automatic `llama-cpp-python` CUDA wheel fallback), `--flash-attn on`, `q8_0` K/V cache quantization, up to `49,152`-token context with rolling turn compaction, and background crash recovery.
-- **Hybrid Local / Cloud Provider Switcher:** Toggle instantly in the topbar between your local Colab GPU GGUF model and the **Gemini API** (`gemini-2.5-flash`, `gemini-2.5-pro`, `gemini-2.0-flash`) without losing conversation state.
-- **Multimodal Vision & Coordinate Grid Grounding:** Pairs a GGUF `mmproj` vision projector with automatic cyan coordinate-grid overlays (`x200..x1800`, `y200..y1000`) so the agent can inspect screenshots, verify downloaded images, and click exact pixel targets on the X11 desktop.
-- **Uncensored Web, Image & Media Engine:** Multi-engine web search (`safesearch=off`, `region=wt-wt`) with DuckDuckGo HTML and Brave fallbacks, fast HTTP-to-Markdown page extraction, anti-hotlink image downloader, and verbatim AI image generation.
-- **Headless Chromium & Live `1920x1080` X11 Virtual Desktop:** Automates indexed DOM elements (`[0]`, `[1]`, ...) in Playwright Chromium alongside an interactive `Xvfb` + `Fluxbox` + `x11vnc` + `noVNC` desktop overlay directly inside the web UI.
-- **Deterministic Motion Graphics & Office Artifacts:** Renders frame-accurate `60fps` HTML5 Canvas/CSS animations (`window.seekToFrame`) into H.264 `.mp4` videos via FFmpeg, plus publication-grade `.pdf` (WeasyPrint), `.ipynb`, `.xlsx`, `.pptx`, and `.docx` files.
-- **Portable `SKILL.md` Workflow Loader:** Supports progressive-disclosure `SKILL.md` packages—installable via GitHub repository URL/subpath or `.md`/`.zip` upload.
+### Inference & Hybrid AI Routing
+- **Native CUDA `llama-server` + Auto-Healing Watchdog:** Automatically fetches prebuilt `sm_75`+ CUDA `llama-server` binaries (with prebuilt `llama-cpp-python` CUDA wheel fallback), enables `--flash-attn on` and `q8_0` K/V cache quantization, supports up to `49,152`-token context with rolling turn compaction, and restarts automatically if the backend crashes.
+- **Instant Local / Gemini API Switcher:** Toggle between your local Colab GPU model and the **Gemini API** (`gemini-2.5-flash`, `gemini-2.5-pro`, `gemini-2.0-flash`) directly from the top bar without losing chat or workspace state.
+- **Configurable Reasoning & Step Budgets:** Switch reasoning depth (`OFF` / `BRIEF` / `DEEP`), adjust autonomous execution steps (`4`–`120` or `ENDLESS`), and toggle `AUTO-VISION` per turn.
+
+### Vision, Search & Browser Automation
+- **Multimodal Vision with Coordinate Grid Grounding:** Pairs a GGUF `mmproj` projector with automatic cyan coordinate overlays (`x200..x1800`, `y200..y1000`) on desktop screenshots so the agent can visually verify images and click exact pixel coordinates.
+- **Uncensored Web, Image & AI Art Engine:** Multi-engine web search (`safesearch=off`, `region=wt-wt`) with DuckDuckGo HTML and Brave fallbacks, clean HTTP-to-Markdown page extraction, anti-hotlink image downloading, and verbatim AI image generation.
+- **Headless Chromium + Live `1920x1080` X11 Virtual Desktop:** Automates indexed DOM elements (`[0]`, `[1]`, ...) via Playwright Chromium alongside an interactive `Xvfb :99` + `Fluxbox` + `x11vnc` + `noVNC` desktop stream right inside the browser.
+
+### Artifacts & Extensible Skills
+- **Deterministic Motion Graphics & Office Suite:** Renders frame-accurate `60fps` HTML5 Canvas/CSS animations (`window.seekToFrame`) into H.264 `.mp4` videos with FFmpeg, and builds styled `.pdf` reports (WeasyPrint), runnable `.ipynb` notebooks, `.xlsx` workbooks with formulas, `.pptx` decks, and `.docx` files.
+- **Portable `SKILL.md` Workflow System:** Progressive-disclosure skill loader supporting one-click GitHub repository/subpath cloning and `.md` / `.zip` bundle uploads.
 
 ---
 
-## Interface & Workspace Showcase
+## Full-Width Workspace Walkthrough
 
-| Studio View | Preview |
-| :--- | :--- |
-| **1. Autonomous Tool Execution & Media Cache**<br>Live tool traces, inline verified image cards, and one-click path copying inside the **MEDIA** inspector tab. | <img src="assets/02-media-cache.jpeg" alt="Media Cache and Inline Search Results" width="540" /> |
-| **2. Portable `SKILL.md` Registry**<br>Clone skills directly from GitHub repositories or upload `.zip`/`.md` bundles with progressive disclosure. | <img src="assets/03-skills-manager.jpeg" alt="Portable SKILL.md Manager" width="540" /> |
-| **3. Live X11 / Chromium Viewport & noVNC**<br>Inspect the `1920x1080` virtual display or click **EXPAND & USE** for full interactive VNC control in-browser. | <img src="assets/04-x11-viewport.jpg" alt="X11 Chromium Live Viewport" width="540" /> |
-| **4. Multi-Step Browser Automation**<br>Automatic fallback handling, DOM indexing, and real-time step/reasoning budget controls (`OFF` / `BRIEF` / `DEEP`). | <img src="assets/05-browser-automation.jpeg" alt="Autonomous Browser Execution Trace" width="540" /> |
-| **5. GPU Telemetry & Hybrid API Controls**<br>Monitor Tesla T4 VRAM utilization, `llama-server` logs, Cloudflare Tunnel URLs, and switch between Local GPU and Gemini API. | <img src="assets/06-system-telemetry.jpeg" alt="Runtime GPU Telemetry and System Tab" width="540" /> |
+### 1. Live `1920x1080` X11 & Chromium Viewport (`VIEWPORT` Tab)
+Control a full Ubuntu virtual display (`DISPLAY=:99`) directly from the inspector panel. Capture instant X11 snapshots or click **EXPAND & USE** to open an interactive `noVNC` session in-browser.
+
+<p align="center">
+  <img src="assets/04-x11-viewport.jpg" alt="X11 Chromium Live Viewport" width="100%" />
+</p>
+
+---
+
+### 2. Multi-Step Autonomous Tool Execution & Fallbacks
+Every tool call (`browser_action`, `image_search`, `run_bash`, `file_ops`, etc.) streams live `EXEC` and `DONE` traces with automatic error recovery when pages time out or hit CAPTCHAs.
+
+<p align="center">
+  <img src="assets/05-browser-automation.jpeg" alt="Autonomous Browser Execution Trace" width="100%" />
+</p>
+
+---
+
+### 3. Inline Verified Media & Downloaded Asset Cache (`MEDIA` Tab)
+Downloaded search results and generated images render inline in the conversation with resolution metadata and source links, while the **MEDIA** inspector caches every file for one-click `PATH` copying.
+
+<p align="center">
+  <img src="assets/02-media-cache.jpeg" alt="Media Cache and Inline Search Results" width="100%" />
+</p>
+
+---
+
+### 4. Portable `SKILL.md` Manager (`SKILLS` Tab)
+Install new agent capabilities on the fly by pasting any GitHub URL (including folder subpaths) or uploading a `SKILL.md` / `.zip` package.
+
+<p align="center">
+  <img src="assets/03-skills-manager.jpeg" alt="Portable SKILL.md Manager" width="100%" />
+</p>
+
+---
+
+### 5. Real-Time GPU Telemetry, API Switcher & Server Logs (`SYSTEM` Tab)
+Monitor Tesla T4 VRAM allocation, `llama-server` health and recovery count, live `llama.cpp` logs, public Cloudflare Tunnel URLs, and optional Gemini API credentials in one place.
+
+<p align="center">
+  <img src="assets/06-system-telemetry.jpeg" alt="Runtime GPU Telemetry and System Tab" width="100%" />
+</p>
 
 ---
 
@@ -47,30 +88,30 @@ A self-contained autonomous AI engineering, research, and desktop automation stu
 | **Inference Engine** | Native CUDA `llama-server` (`127.0.0.1:8000/v1`, OpenAI-compatible) with `llama-cpp-python[server]` fallback |
 | **Web Studio & Proxy** | FastAPI + Uvicorn (`127.0.0.1:7860`), Server-Sent Events (SSE) streaming, WebSocket-to-TCP `websockify` VNC bridge |
 | **Public Access** | Automatic `cloudflared` quick tunnel (`https://*.trycloudflare.com`) + embedded Google Colab iframe |
-| **Virtual Display** | `Xvfb :99` (`1920x1080x24`), `fluxbox`, `xdotool`, `scrot`, `x11vnc`, and `/usr/share/novnc` |
+| **Virtual Display** | `Xvfb :99` (`1920x1080x24`), `fluxbox`, `xdotool`, `scrot`, `x11vnc` (`5900`), and `/usr/share/novnc` |
 
-### Agent Tools (`11` Native Tools)
+### Built-in Agent Tools (`11` Native Tools)
 
-- `web_search` — Uncensored multi-backend web search (`safesearch=off`) across DDGS, DuckDuckGo HTML, and Brave.
-- `fetch_url` — Clean HTTP-to-Markdown article and documentation reader (`BeautifulSoup` + `markdownify`).
-- `image_search` — Uncensored multi-engine image search with automatic local download and verification to `/content/workspace/artifacts/images/`.
-- `generate_image` — Uncensored 18+ AI image generation via Perchance (with Pollinations Flux fallback).
-- `view_image` — Multimodal vision inspection with automatic pixel coordinate grid overlay on desktop captures.
-- `browser_action` — Playwright Chromium automation (`goto`, `get_markdown`, `click`, `fill`, `scroll`, `eval_js`, `screenshot`, `render_video`).
-- `desktop_action` — Direct `1920x1080` X11 GUI mouse and keyboard control (`screenshot`, `click`, `double_click`, `right_click`, `scroll`, `type`, `key`).
-- `run_bash` — Non-interactive root Ubuntu shell execution inside `/content/workspace` (`DISPLAY=:99`).
-- `file_ops` — Read, write, append, surgical edit, and recursive directory listing.
-- `activate_skill` / `install_skill` — Load or clone portable `SKILL.md` workflows on demand.
+- **`web_search`** — Uncensored multi-backend web search (`safesearch=off`) across DDGS, DuckDuckGo HTML, and Brave.
+- **`fetch_url`** — Clean HTTP-to-Markdown article and documentation reader (`BeautifulSoup` + `markdownify`).
+- **`image_search`** — Uncensored multi-engine image search with local download and verification into `/content/workspace/artifacts/images/`.
+- **`generate_image`** — Uncensored 18+ AI image generation via Perchance (with Pollinations Flux fallback).
+- **`view_image`** — Multimodal vision inspection with automatic pixel coordinate grid overlay on desktop captures.
+- **`browser_action`** — Playwright Chromium automation (`goto`, `get_markdown`, `click`, `fill`, `scroll`, `eval_js`, `screenshot`, `render_video`).
+- **`desktop_action`** — Direct `1920x1080` X11 GUI mouse and keyboard control (`screenshot`, `click`, `double_click`, `right_click`, `scroll`, `type`, `key`).
+- **`run_bash`** — Non-interactive root Ubuntu shell execution inside `/content/workspace` (`DISPLAY=:99`).
+- **`file_ops`** — Read, write, append, surgical edit, and recursive directory listing.
+- **`activate_skill` / `install_skill`** — Load or clone portable `SKILL.md` workflows on demand.
 
 ### Included Starter Skills
 
 | Skill | Purpose |
 | :--- | :--- |
-| `document-studio` | Builds styled PDFs (WeasyPrint), runnable `.ipynb` notebooks, `.xlsx` workbooks with formulas, `.pptx` decks, and `.docx` reports with embedded images. |
-| `motion-video` | Synthesizes deterministic frame-by-frame HTML5 Canvas/CSS animations and encodes `1080p` H.264 `.mp4` videos with FFmpeg. |
-| `web-researcher` | Coordinates multi-source web research, clean markdown extraction, and verified visual asset collection. |
-| `desktop-operator` | Launches headed Chromium and operates GUI applications across the `1920x1080` X11 desktop. |
-| `image-studio` | Generates verbatim high-detail AI imagery directly into the workspace media gallery. |
+| **`document-studio`** | Builds styled PDFs (WeasyPrint), runnable `.ipynb` notebooks, `.xlsx` workbooks with formulas, `.pptx` decks, and `.docx` reports with embedded images. |
+| **`motion-video`** | Synthesizes deterministic frame-by-frame HTML5 Canvas/CSS animations and encodes `1080p` H.264 `.mp4` videos with FFmpeg. |
+| **`web-researcher`** | Coordinates multi-source web research, clean markdown extraction, and verified visual asset collection. |
+| **`desktop-operator`** | Launches headed Chromium and operates GUI applications across the `1920x1080` X11 desktop. |
+| **`image-studio`** | Generates verbatim high-detail AI imagery directly into the workspace media gallery. |
 
 ---
 
